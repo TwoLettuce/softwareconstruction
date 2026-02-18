@@ -98,7 +98,7 @@ Or if this problem is happening with error handling, try to return the error in 
 Return new Gson().toJson(Map.of(“message”, ex.getMessage()));
 ```
 
-## Autograder doesn't compile my project - package com.fasterxml.jackson.core does not exist
+## Autograder doesn't compile my project - package com.fasterxml.jackson.core does not exist / expected: <401> but was: <500>
 
 If your code runs on your local machine, but your code will not compile, or you receive 500 HTTP status codes, one potential reason is that your project has added the jackson dependency, which the autograder does not use. You might be doing something like:
 
