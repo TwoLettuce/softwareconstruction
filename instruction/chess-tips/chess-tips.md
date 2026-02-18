@@ -98,6 +98,20 @@ Or if this problem is happening with error handling, try to return the error in 
 Return new Gson().toJson(Map.of(“message”, ex.getMessage()));
 ```
 
+## Autograder doesn't compile my project - package com.fasterxml.jackson.core does not exist
+
+If your code runs on your local machine, but your code will not compile, or you receive 500 HTTP status codes, one potential reason is that your project has added the jackson dependency, which the autograder does not use. You might be doing something like:
+
+```java
+ctx.json(registerResponse);
+```
+
+The autograder expects you to use specific dependencies, one of which is Gson. Serializing your response with Gson rather than with Jackson will ensure that your project isn't using any dependencies that are undefined to the autograder. In this example:
+
+```java
+ctx.result(gson.toJson(registerResponse));
+```
+
 ## How do I read the authToken from an HTTP request?
 
 Refer to the [Web API](https://github.com/softwareconstruction240/softwareconstruction/blob/main/instruction/web-api/web-api.md#http-headers) instruction.
