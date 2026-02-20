@@ -98,15 +98,15 @@ Or if this problem is happening with error handling, try to return the error in 
 Return new Gson().toJson(Map.of(“message”, ex.getMessage()));
 ```
 
-## Autograder doesn't compile my project - package com.fasterxml.jackson.core does not exist / expected: <401> but was: <500>
+## Autograder doesn't compile my project - package com.fasterxml.jackson.databind does not exist / expected: <401> but was: <500>
 
-If your code fails to compile in the autograder or you receive 500 HTTP status codes but runs fine on your local machine, one potential reason is that your project is using dependencies beyond what is used in the specifications of the project. This will cause problems because the autograder might not be using those dependencies. One specific dependency you might be using is jackson, which would be reflected if your handlers or servers are doing something similar to the following:
+If your code fails to compile in the autograder or you receive 500 HTTP status codes but runs fine on your local machine, one potential reason is that your project is using dependencies beyond what is used in the specifications of the project. This will cause problems because the autograder might not be using those dependencies. One specific dependency you might be using is jackson, which would be reflected if your handler or server is doing something similar to the following:
 
 ```java
 ctx.json(registerResponse);
 ```
 
-The autograder expects you to use specific dependencies, one of which is Gson. Serializing your response with Gson rather than with Jackson will ensure that your project isn't using any dependencies that are undefined to the autograder.
+The autograder expects you to use specific dependencies, one of which is Gson. Serializing your response with Gson rather than with Jackson will ensure that your project isn't using any dependencies that are undefined to the autograder. Feel free to look at [PetShop's Server class](https://github.com/softwareconstruction240/softwareconstruction/blob/main/petshop/server/src/main/server/PetServer.java) and examine how serialization is done there.
 
 ## How do I read the authToken from an HTTP request?
 
